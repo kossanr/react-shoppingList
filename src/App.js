@@ -13,6 +13,25 @@ export default class App extends React.Component {
       { name: "carrots", checked: true },
     ],
   };
+
+  handleDeleteItem = (item) => {
+    const newItems = this.state.shoppingItems.filter((itm) => itm !== item);
+    this.setState({
+      shoppingItems: newItems,
+    });
+  };
+  handleCheckItem = (item) => {
+    const newItems = this.state.shoppingItems.map((itm) => {
+      if (itm === item) {
+        itm.checked = !itm.checked;
+      }
+      return itm;
+    });
+    this.setState({
+      shoppingItems: newItems,
+    });
+  };
+
   render() {
     //App conatins title, Shoppinglist with prop items, and AddItemForm
     return (
@@ -25,7 +44,11 @@ export default class App extends React.Component {
             <AddItemForm />
           </section>
           <section>
-            <ShoppingList items={this.state.shoppingItems} />
+            <ShoppingList
+              handleCheckItem={this.handleCheckItem}
+              handleDeleteItem={this.handleDeleteItem}
+              items={this.state.shoppingItems}
+            />
           </section>
         </main>
       </>

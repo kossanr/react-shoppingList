@@ -10,7 +10,10 @@ export default class AddItemForm extends React.Component {
           placeholder="add items"
           aria-label="Shopping list item"
         />
-        <button type="submit"> Add Item </button>
+        <button type="submit" onSubmit>
+          {" "}
+          Add Item{" "}
+        </button>
       </form>
     );
   }

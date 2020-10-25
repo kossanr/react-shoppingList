@@ -8,8 +8,15 @@ export default function ShoppingItem(props) {
       >
         {props.item.name}
       </h2>
-      <button type="button">Add</button>
-      <button type="button">Delete</button>
+      <button type="button" onClick={() => props.handleCheckItem(props.item)}>
+        Check
+      </button>
+      <button type="button" onClick={() => props.handleDeleteItem(props.item)}>
+        Delete
+      </button>
     </li>
   );
 }
+ShoppingItem.defaultProps = {
+  item: {},
+};
